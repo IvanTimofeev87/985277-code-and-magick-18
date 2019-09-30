@@ -1,11 +1,11 @@
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 
-var CLOUD_X = 100;
-var CLOUD_Y = 10;
-var GAP = 50;
-var FONT_GAP = 50;
-var TEXT_WIDTH = 50;
+var CLOUD_X = 140;
+var CLOUD_Y = 250;
+var GAP = 10;
+var FONT_GAP = 10;
+//var TEXT_WIDTH = 50;
 var BAR_HEIGHT = 150;
 var barWidth = 40;
 
@@ -25,6 +25,18 @@ window.renderStatistics = function(ctx) {
     ctx.fillText('Список результатов:', 120, 50);
 
     ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-    ctx.fillText('Ivan', 140, 250);
+    ctx.fillText('Ivan', CLOUD_X, CLOUD_Y);
+    ctx.fillRect(CLOUD_X, CLOUD_HEIGHT - (GAP * 2 + FONT_GAP * 2 + BAR_HEIGHT), 50, 150);
+
+    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    ctx.fillText('Tor', CLOUD_X + barWidth + GAP, CLOUD_Y);
+    ctx.fillRect(140, 70, 50, 150);
+
+    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    ctx.fillText('Odin', CLOUD_X + (barWidth + GAP) * 2, CLOUD_Y);
+    ctx.fillRect(140, 70, 50, 150);
+
+    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    ctx.fillText('Tyr', CLOUD_X + (barWidth + GAP) * 3, CLOUD_Y);
     ctx.fillRect(140, 70, 50, 150);
 };
