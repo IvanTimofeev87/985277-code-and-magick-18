@@ -30,13 +30,13 @@ var getMaxElement = function(arr) {
     }
     return maxElement;
   } else {
-    console.log('Пустой массив');
+    alert('Пустой массив');
   }
 
 };
 
 var randomNumb = function(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min) + min);
 };
 
 window.renderStatistics = function(ctx, players, times) {
@@ -51,7 +51,7 @@ window.renderStatistics = function(ctx, players, times) {
 
   var maxTime = getMaxElement(times);
 
-  for (var i = 0; i < players.length; i++) {
+  players.forEach(function(item, i) {
     ctx.fillStyle = 'black';
 
     ctx.fillText(Math.ceil(times[i]), CLOUD_X + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - (GAP * 3 + TEXT_HEIGHT + (MAX_BAR * times[i]) / maxTime));
@@ -60,9 +60,9 @@ window.renderStatistics = function(ctx, players, times) {
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = 'hsl(240,' + randomNumb(0, 256) + '%' + ', 50%)';
+      ctx.fillStyle = 'hsl(240,' + (randomNumb(1, 255) / i) + '%' + ', 50%)';
     }
 
     ctx.fillRect(CLOUD_X + (BAR_WIDTH + BAR_GAP) * i, BAR_HEIGHT, BAR_WIDTH, -(MAX_BAR * times[i]) / maxTime);
-  }
+  });
 };
